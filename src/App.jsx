@@ -1,9 +1,10 @@
+import { MainExpenses } from "./components/expenses/mainExpenses"
 
 function App() {
 
   return (
     <div className="App">
-      Hello World!
+      <MainExpenses />
     </div>
   )
 }
