@@ -3,22 +3,22 @@ import React from 'react'
 import { ContextStates } from '../../globalStates/context'
 import { Div } from '../../style/styledDiv'
 import { Main } from '../../style/styledMain'
+import { BarExpenses } from './utilityComponents/barExpenses'
+import { FooterSec } from './utilityComponents/footerExpenses'
+import { HeaderExpenses } from './utilityComponents/headerExpenses'
 
  const ExpenseChart = () => {
-  const [total, setTotal] = React.useState(``)
+  const [totalMonth, setTotalMonth] = React.useState(``)
   const {data} = React.useContext(ContextStates)
 
-  // data && console.log(typeof data[1].amount)
-
-  
   
   React.useEffect(()=>{
     const setarTotal =() => {
       if (!data) null
       
-      let x = data.reduce((a,item) => {
+        data.reduce((a,item) => {
         a += item.amount 
-        setTotal(a)
+        setTotalMonth(a)
         return a
       },0)
     }
@@ -29,63 +29,23 @@ import { Main } from '../../style/styledMain'
 
   return (
     <Main flexColum fonth1="1" weighth1="bold" paddiv="2" fontspan="2.5" padh1="1" padh12="0">
-      <h1 >
-      Spending - Last 7 days
-      </h1>
 
-      <Div flexBetween justcont="start">
-        
-        <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div>
-        <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div>
-        <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div>
-        <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div>
-        <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div>
-        <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div>
-        {/* <Div first flexColum width="58" right="center">
-          <span>aa</span>
-          <h1>mon</h1>
-        </Div> */}
-        
-       
-      
+        <HeaderExpenses />
 
+        <BarExpenses />
 
-      </Div>
-
-
-      <Div flexBetween>
-        <Div flexColum >
-          <h1>
-          Total this month
-          </h1>
-          <span >
-            {data && total}
-          </span>
-        </Div>
-
-        <Div flexColum fontspan="1" right="end">
-          <h1>+2.5%</h1>
-          <span>from last month</span>
-        </Div>
-      </Div>
+        <FooterSec 
+        total={totalMonth} 
+        txt="Total this month"
+        percent="2.5"
+        comparation="from last month"
+        />
+        <FooterSec 
+        total={totalMonth} 
+        txt="Total this week"
+        percent="2"
+        comparation="from last week"
+        />
 
     </Main>
   )
