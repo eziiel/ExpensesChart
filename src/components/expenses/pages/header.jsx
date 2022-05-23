@@ -6,7 +6,10 @@ import logo from "../../../images/logo.svg"
  const Header = () => {
   const {balance} = React.useContext(ContextStates)
 
+
+
   const balanceValue = Number(balance).toFixed(2)
+  
   return (
     <Div mb="2" first flexBetween paddiv ="2">
       <Div first flexColum fontspan="2">

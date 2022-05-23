@@ -1,19 +1,27 @@
 
 import React from 'react'
+import { ContextStates } from '../../../globalStates/context'
+import { Select } from '../../../style/inputSelect'
 import { Div } from '../../../style/styledDiv'
 
- const HeaderExpenses = () => {
+const HeaderExpenses = () => {
+  const data = React.useContext(ContextStates)
+
+  const handleWeek =(e) => {
+    data.setOfWeek(e.target.value)
+  }
+
   return (
     <Div flexBetween>
       <h1 >
         Spending - Last 7 days
       </h1>
-      <select name="week">
-        <option value="firstWeek" selected>first week</option>
-        <option value="secondWeek">second week</option>
-        <option value="thirdWeek">third week</option>
-        <option value="fourthWeek">fourth week</option>
-      </select>
+      <Select onChange={handleWeek} name="week" value={data.week}>
+        <option value="01/05" >first week</option>
+        <option value="02/05">second week</option>
+        <option value="03/05">third week</option>
+        <option value="04/05">fourth week</option>
+      </Select>
     </Div>
 
   )

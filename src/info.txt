@@ -3,36 +3,3 @@
 #1C5253
 #306B34
 #B6174B
-
-  footerbar
-  <Div flexBetween mb='2'>
-        <Div flexColum padh1="0" padh12="0">
-          <h1>
-          Total this week
-          </h1>
-          <span >
-            R$ {data && total}
-          </span>
-        </Div>
-
-        <Div flexColum fontspan="1" right="end">
-          <h1>+2.5%</h1>
-          <span>from last week</span>
-        </Div>
-      </Div>
-
-      <Div flexBetween>
-        <Div flexColum padh1="0" padh12="0">
-          <h1>
-          Total this month
-          </h1>
-          <span >
-            R$ {data && total}
-          </span>
-        </Div>
-
-        <Div flexColum fontspan="1" right="end">
-          <h1>+2.5%</h1>
-          <span>from last month</span>
-        </Div>
-      </Div>

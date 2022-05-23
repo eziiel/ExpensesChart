@@ -8,13 +8,14 @@ import { FooterSec } from './utilityComponents/footerExpenses'
 import { HeaderExpenses } from './utilityComponents/headerExpenses'
 
  const ExpenseChart = () => {
-  const [totalMonth, setTotalMonth] = React.useState(``)
-  const {data} = React.useContext(ContextStates)
+  const [totalMonth, setTotalMonth] = React.useState(0)
+  const [totalWeek, setTotalWeek] = React.useState(0)
+  const {data, setWeekAct, week,actWeek} = React.useContext(ContextStates)
 
   
   React.useEffect(()=>{
     const setarTotal =() => {
-      if (!data) null
+      // if (!data)  null
       
         data.reduce((a,item) => {
         a += item.amount 
@@ -24,13 +25,25 @@ import { HeaderExpenses } from './utilityComponents/headerExpenses'
     }
     data && setarTotal()
   },[data])
+ 
+  React.useEffect(()=>{
+    const setarTotalWeek =() => {
+      if (setWeekAct().length == 0) null
 
-  // data && console.log(total)
+        setWeekAct().reduce((a,item) => {
+        a += item.amount 
+        setTotalWeek((a).toFixed(2))
+        return a
+      },0)
+    }
+    data && setarTotalWeek()
+  },[data,week])
+
 
   return (
     <Main flexColum fonth1="1" weighth1="bold" paddiv="2" fontspan="2.5" padh1="1" padh12="0">
 
-        <HeaderExpenses />
+        <HeaderExpenses/>
 
         <BarExpenses />
 
@@ -41,7 +54,7 @@ import { HeaderExpenses } from './utilityComponents/headerExpenses'
         comparation="from last month"
         />
         <FooterSec 
-        total={totalMonth} 
+        total={totalWeek || 0} 
         txt="Total this week"
         percent="2"
         comparation="from last week"
