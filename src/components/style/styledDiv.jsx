@@ -18,6 +18,7 @@ const Div = styled.div`
     justify-content: ${(props) =>props.justcont? `${props.justcont}`: "space-between"};
     align-items: ${(props) => `${props.alg}` || "center"};
     gap: 1rem;
+    position :relative;
     `}
 
   ${(props) => props.flexColum && css`
@@ -38,6 +39,26 @@ const Div = styled.div`
       font-size: ${(props) => `${props.fontspan}rem`};
       font-weight: bold;
     }
+
+    ${(props) => props.after && css`  
+      :hover {
+        background:#B6174B;
+      }
+      &:hover:after {
+        opacity:1;
+      }
+      &::after{
+        opacity:0;
+        content: "${(props) => props.info}";
+        position:absolute;
+        /* left:10%; */
+        top:-40px;
+        padding:.5rem;
+        border-radius:20px;
+        background: #31313145;
+      }
+      }
+    `}
 `
 
 export {

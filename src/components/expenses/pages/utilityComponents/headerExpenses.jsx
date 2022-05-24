@@ -17,10 +17,10 @@ const HeaderExpenses = () => {
         Spending - Last 7 days
       </h1>
       <Select onChange={handleWeek} name="week" value={data.week}>
-        <option value="01/05" >first week</option>
-        <option value="02/05">second week</option>
-        <option value="03/05">third week</option>
-        <option value="04/05">fourth week</option>
+        <option value="01/05" >first week - may</option> 
+        <option value="02/05">second week - may</option>
+        <option value="03/05">third week - may</option>
+        <option value="04/05">fourth week - may</option>
       </Select>
     </Div>
 

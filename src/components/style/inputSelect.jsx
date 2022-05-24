@@ -3,6 +3,9 @@ import styled from "styled-components"
 
 const Select = styled.select`
 
+  order: 1;
+  box-sizing: border-box;
+  display: inline-block;
   padding: .5rem;
   border-radius: 30px;
   background:#1C5253;
@@ -14,7 +17,7 @@ const Select = styled.select`
     outline: none;
     box-shadow: 0 0 0 2px #fff, 0 0 0 3px #1C5253;
   }
-  >option{
+  option{
     position: absolute;
     margin: 2rem 0;
 }
