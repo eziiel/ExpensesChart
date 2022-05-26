@@ -9,7 +9,9 @@ import { Div } from '../../../style/styledDiv'
   return (
     <Div flexColum alg ="end" justcont="end" mb="3" heightDiv ="300" borderB ="2px solid #B6174B" borderR = "0"> 
 
-    
+
+    <Div flexColum>
+
       <Div flexBetween alg ="end" justcont="start"> 
       {data && setWeekAct().map((item)=> (
         <Div key={item.id} first flexBetween width = "58" 
@@ -19,15 +21,24 @@ import { Div } from '../../../style/styledDiv'
         />
       ))}
       </Div>
+       
+      <Div flexBetween alg ="end" justcont="start" mb="2" > 
+      {data && setWeekAct().map((item)=> (
+        <Div key={item.id} flexBetween width = "58"  justcont="center"
+        >{item.weekday}</Div>
+      ))}
+      </Div>
+
+    </Div>
 
 
-      <Div flexBetween alg ="end">
+      {/* <Div flexBetween alg ="end">
       {data && weekday.map((item) => (
         <Div key={item}  flexColum width="58" right="center" height="100">
            <h1>{item}</h1>
          </Div>
       ))}
-      </Div>
+      </Div> */}
 
 
 

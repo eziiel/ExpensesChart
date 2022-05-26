@@ -17,6 +17,7 @@ const Div = styled.div`
     display: flex;
     justify-content: ${(props) =>props.justcont? `${props.justcont}`: "space-between"};
     align-items: ${(props) => `${props.alg}` || "center"};
+    /* align-content: center; */
     gap: 1rem;
     position :relative;
     `}
