@@ -9,6 +9,7 @@ import { Div } from '../../../style/styledDiv'
   return (
     <Div flexColum alg ="end" justcont="end" mb="3" heightDiv ="300" borderB ="2px solid #B6174B" borderR = "0"> 
 
+    
       <Div flexBetween alg ="end" justcont="start"> 
       {data && setWeekAct().map((item)=> (
         <Div key={item.id} first flexBetween width = "58" 

@@ -62,9 +62,10 @@ const ContextProvider = ({children}) => {
 
   //functions
   //set week
-  const setWeekAct =() => {
+  const setWeekAct =(value = week) => {
+    if(!data) return null
     let res = data.filter(item => {
-      if(item.weekmonth == week) {
+      if(item.weekmonth == value) {
           return item
       }
     })
@@ -104,23 +105,22 @@ const ContextProvider = ({children}) => {
   //----------------set of total week
   
   
+  
+  const setOfTotalMonth =(month = week.slice(-1)) => {
+    if (!data) return null
+    let res = data.filter(item => item.weekmonth.slice (-1)== month).reduce((a,item) => a+=item.amount,0)
+    return res.toFixed(2)
+  }
+  
   React.useEffect(()=>{
-
-    const setOfTotalMonth =(month = week.slice(-1)) => {
-      if (!data) return null
-      let res = data.filter(item => item.weekmonth.slice (-1)== month).reduce((a,item) => a+=item.amount,0)
-      setTotalMonth(res.toFixed(2))
-      return
-    }
-    
-      setOfTotalMonth()
+    setTotalMonth(setOfTotalMonth())
   },[data,week])  
 
 
   const DATA = {
     data,balance,setOfBalance, week, setOfWeek,setOfDataFinal,
     setWeekAct,weekday, totalWeek, totalMonth,total,months,weeks,
-    mountAct,weekAct,
+    mountAct,weekAct,setOfTotalMonth
   }
 
   return (

@@ -15,7 +15,7 @@ const FooterSec =({txt,total,percent,comparation}) => {
     </Div>
 
     <Div flexColum fontspan="1" right="end">
-      <h1>+ {percent} %</h1>
+      <h1>{percent} %</h1>
       <span>{comparation}</span>
     </Div>
   </Div>
