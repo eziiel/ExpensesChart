@@ -11,11 +11,8 @@ const ContextProvider = ({children}) => {
   const [balance, setBalance] = React.useState("1500")
   const [totalMonth, setTotalMonth] = React.useState(0)
   const [totalWeek, setTotalWeek] = React.useState(0)
-  const weekday = ["mon","tue","wed","thu","fri","sat","sun"]
   const dataBase = fetch("http://localhost:8082/")
   
-  const [total, setTotal] = React.useState([])
-
   const months = {
     Jan:1,
     Feb:2,
@@ -119,8 +116,8 @@ const ContextProvider = ({children}) => {
 
   const DATA = {
     data,balance,setOfBalance, week, setOfWeek,setOfDataFinal,
-    setWeekAct,weekday, totalWeek, totalMonth,total,months,weeks,
-    mountAct,weekAct,setOfTotalMonth
+    setWeekAct, totalWeek, totalMonth, months, weeks,
+    mountAct, weekAct, setOfTotalMonth
   }
 
   return (
