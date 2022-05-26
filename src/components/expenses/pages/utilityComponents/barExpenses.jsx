@@ -28,40 +28,9 @@ import { Div } from '../../../style/styledDiv'
         >{item.weekday}</Div>
       ))}
       </Div>
-
     </Div>
 
-
-      {/* <Div flexBetween alg ="end">
-      {data && weekday.map((item) => (
-        <Div key={item}  flexColum width="58" right="center" height="100">
-           <h1>{item}</h1>
-         </Div>
-      ))}
-      </Div> */}
-
-
-
-
     </Div>
-
-   
-
-
-
-
-
-  // {data && setWeekAct().map((item)=> (
-  //       <Div first flexBetween width="58" right="center" height={item.amount} >
-  //         <span key={item.id} title={item.amount}></span>
-  //         </Div>
-  //     ))}
-    //   {data && weekday.map((item) => (
-    //     <Div key={item} first flexColum width="58" right="center">
-    //       <h1>{item}</h1>
-    //     </Div>
-       
-      // </Div>
     )
 }
 
