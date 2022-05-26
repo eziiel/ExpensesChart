@@ -5,22 +5,39 @@ import { Select } from '../../../style/inputSelect'
 import { Div } from '../../../style/styledDiv'
 
 const HeaderExpenses = () => {
-  const data = React.useContext(ContextStates)
-
+  const {data,setOfWeek,week} = React.useContext(ContextStates)
+  const [weeks, setWeeks] = React.useState()
   const handleWeek =(e) => {
-    data.setOfWeek(e.target.value)
+    setOfWeek(e.target.value)
   }
+
+
+  React.useEffect(() => {
+
+  const setarSemana = ()=>{
+    if(!data) return null
+
+    let arrSemana = data.map(item => item.weekmonth)
+    let WeeFinal = arrSemana.filter((a,i) => arrSemana
+    .indexOf(a) === i)
+      setWeeks(WeeFinal)
+  }
+  data && setarSemana()
+  },[data])
+
 
   return (
     <Div flexBetween>
       <h1 >
         Spending - Last 7 days
       </h1>
-      <Select onChange={handleWeek} name="week" value={data.week}>
-        <option value="01/05" >first week - may</option> 
-        <option value="02/05">second week - may</option>
-        <option value="03/05">third week - may</option>
-        <option value="04/05">fourth week - may</option>
+      <Select onChange={handleWeek} name="week" value={week}>
+       
+       {weeks && weeks.map((item)=>(
+         <option key={item} value={item} >{item}</option> 
+       ))}
+       
+
       </Select>
     </Div>
 

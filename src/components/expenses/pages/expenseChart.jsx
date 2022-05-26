@@ -1,7 +1,6 @@
 
 import React from 'react'
 import { ContextStates } from '../../globalStates/context'
-import { Div } from '../../style/styledDiv'
 import { Main } from '../../style/styledMain'
 import { BarExpenses } from './utilityComponents/barExpenses'
 import { FooterSec } from './utilityComponents/footerExpenses'
@@ -9,6 +8,7 @@ import { HeaderExpenses } from './utilityComponents/headerExpenses'
 
  const ExpenseChart = () => {
   const {totalWeek, totalMonth} = React.useContext(ContextStates)
+
 
   return (
     <Main flexColum fonth1="1" weighth1="bold" paddiv="2" fontspan="2.5" padh1="1" padh12="0">

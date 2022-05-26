@@ -5,7 +5,9 @@ const ContextStates = React.createContext()
 
 const ContextProvider = ({children}) => {
   const [data, setData] = React.useState()
-  const [week, setWeek] = React.useState('01/05')
+  const [dataFinal, setDataFinal] = React.useState()
+  let monthActual = new Date().getMonth() + 1
+  const [week, setWeek] = React.useState(`01/0${monthActual}`)
   const [balance, setBalance] = React.useState("1500")
   const [totalMonth, setTotalMonth] = React.useState(0)
   const [totalWeek, setTotalWeek] = React.useState(0)
@@ -13,9 +15,28 @@ const ContextProvider = ({children}) => {
   const dataBase = fetch("http://localhost:8082/")
   
   const [total, setTotal] = React.useState([])
-  let monthActual = new Date().getMonth() + 1
 
+  const months = {
+    Jan:1,
+    Feb:2,
+    Mar:3,
+    Apr:4,
+    May:5,
+    Jun:6,
+    Jul:7,
+    Aug:8,
+    Sep:9,
+    Oct:10,
+    Nov:11,
+    Dec:12,
+  }
 
+  const weeks = {
+    semana1 :1,
+    semana2 :2,
+    semana3 :3,
+    semana4 :4,
+  }
   //Fetch API
   React.useEffect(() => {
     async function setar() {
@@ -34,28 +55,10 @@ const ContextProvider = ({children}) => {
     setBalance(data)
   }
 
-  React.useEffect(()=>{
-    const ValueTotal = (value,inf) => {
-      if (!data) return
-      let mar = inf
-      let max = value.length - 1
-      if(mar <= value[max].weekmonth.slice(-1)) {
-    
-      let res = value.filter(item => {
-          return item.weekmonth.slice(-1) == mar
-          
-      })
-      setTotal((total) => total = [...total, {[mar]:res}])
-      
-      data && ValueTotal(value,mar+1)
-    } else {
-          return
-       }
-    }
-    ValueTotal(data,monthActual)
-  },[data])
+  const setOfDataFinal = (value) => {
+    setDataFinal(value)
+  }
 
-  data && console.log(total)
 
   //functions
   //set week
@@ -66,6 +69,22 @@ const ContextProvider = ({children}) => {
       }
     })
       return res
+  }
+  // sett propies of names
+  const mountAct=(value) =>{
+    for (var i in months) {
+      if (months[i] == value) {
+        return i
+      }
+    }
+  }
+  
+  const weekAct=(value) =>{
+    for (var i in weeks) {
+      if (weeks[i] == value) {
+        return i
+      }
+    }
   }
 
   
@@ -83,25 +102,25 @@ const ContextProvider = ({children}) => {
     data && setarTotalWeek()
   },[data,week])
   //----------------set of total week
-  React.useEffect(()=>{
-    const setarTotal =() => {
-      if (!data) null
-      
-        let res = data.reduce((a,item) => {
-        return a += item.amount 
-      },0)
-      setTotalMonth(res.toFixed(2))
-    }
-    data && setarTotal()
-  },[data])
-
-
-
-
   
+  
+  React.useEffect(()=>{
+
+    const setOfTotalMonth =(month = week.slice(-1)) => {
+      if (!data) return null
+      let res = data.filter(item => item.weekmonth.slice (-1)== month).reduce((a,item) => a+=item.amount,0)
+      setTotalMonth(res.toFixed(2))
+      return
+    }
+    
+      setOfTotalMonth()
+  },[data,week])  
+
+
   const DATA = {
-    data,balance,setOfBalance, week, setOfWeek,
-    setWeekAct,weekday, totalWeek, totalMonth,total
+    data,balance,setOfBalance, week, setOfWeek,setOfDataFinal,
+    setWeekAct,weekday, totalWeek, totalMonth,total,months,weeks,
+    mountAct,weekAct,
   }
 
   return (

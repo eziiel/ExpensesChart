@@ -1,7 +1,9 @@
 import { ContextProvider } from "../globalStates/context";
+import { Data } from "../globalStates/setDataGlobal";
 import { GlobalStyled } from "../style/globalStyled";
 import { ExpenseChart } from "./pages/expenseChart";
 import { Header } from "./pages/header";
+
 
 function MainExpenses () {
 
@@ -9,6 +11,7 @@ function MainExpenses () {
     <>
     <GlobalStyled/>
       <ContextProvider>
+        <Data />
         <Header />
         <ExpenseChart />
       </ContextProvider>
