@@ -61,7 +61,7 @@ func router() {
 }
 func AcessDB() {
 	var errAcess error
-	db, errAcess = sql.Open("mysql", "eziel:ezielEZIEL-10@tcp(localhost:3306)/expenses")
+	db, errAcess = sql.Open("mysql", "user:passWord@protocol(url)/db")
 	if errAcess != nil {
 		log.Fatal(errAcess.Error())
 	}

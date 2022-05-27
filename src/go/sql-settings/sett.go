@@ -9,7 +9,7 @@ import (
 
 func main() {
 	//acess DB
-	db, errOpen := sql.Open("mysql", "eziel:ezielEZIEL-10@tcp(localhost:3306)/expenses")
+	db, errOpen := sql.Open("mysql", "user:passWord@protocol(url)/db")
 
 	if errOpen != nil {
 		log.Fatal(errOpen.Error())
